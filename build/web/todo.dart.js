@@ -5341,6 +5341,9 @@ var $$ = Object.create(null);
     get$onChange: function(receiver) {
       return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "change", false), [null]);
     },
+    get$onClick: function(receiver) {
+      return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "click", false), [null]);
+    },
     $isElement: true,
     "%": ";Element"
   },
@@ -5411,6 +5414,11 @@ var $$ = Object.create(null);
   },
   Node: {
     "^": "EventTarget;",
+    remove$0: function(receiver) {
+      var t1 = receiver.parentNode;
+      if (t1 != null)
+        t1.removeChild(receiver);
+    },
     replaceWith$1: function(receiver, otherNode) {
       var $parent, exception;
       try {
@@ -5670,6 +5678,9 @@ var $$ = Object.create(null);
     get$onChange: function(receiver) {
       return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "change", false), [null]);
     },
+    get$onClick: function(receiver) {
+      return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "click", false), [null]);
+    },
     "%": "SVGAElement|SVGAltGlyphDefElement|SVGAltGlyphElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGCircleElement|SVGClipPathElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDefsElement|SVGDescElement|SVGDiscardElement|SVGElement|SVGEllipseElement|SVGFEBlendElement|SVGFEColorMatrixElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGForeignObjectElement|SVGGElement|SVGGeometryElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGGraphicsElement|SVGHKernElement|SVGImageElement|SVGLineElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPathElement|SVGPatternElement|SVGPolygonElement|SVGPolylineElement|SVGRadialGradientElement|SVGRectElement|SVGSVGElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSwitchElement|SVGSymbolElement|SVGTSpanElement|SVGTextContentElement|SVGTextElement|SVGTextPathElement|SVGTextPositioningElement|SVGTitleElement|SVGUseElement|SVGVKernElement|SVGViewElement"
   }
 }],
@@ -5812,11 +5823,21 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(N.addItem$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
   }, "call$0", "main$closure", 0, 0, 1],
   addItem: [function(e) {
-    var newItem = document.createElement("li", null);
+    var newItem, t1;
+    newItem = document.createElement("li", null);
     newItem.textContent = J.get$value$x($.input);
+    t1 = J.get$onClick$x(newItem);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new N.addItem_closure(newItem)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     J.set$value$x($.input, "");
     J.get$children$x($.list).add$1(0, newItem);
-  }, "call$1", "addItem$closure", 2, 0, 6]
+  }, "call$1", "addItem$closure", 2, 0, 6],
+  addItem_closure: {
+    "^": "Closure:10;newItem_0",
+    call$1: function(e) {
+      return J.remove$0$ax(this.newItem_0);
+    },
+    $isFunction: true
+  }
 },
 1],
 ]);
@@ -6006,8 +6027,14 @@ J.get$length$asx = function(receiver) {
 J.get$onChange$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$onChange(receiver);
 };
+J.get$onClick$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$onClick(receiver);
+};
 J.get$value$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$value(receiver);
+};
+J.remove$0$ax = function(receiver) {
+  return J.getInterceptor$ax(receiver).remove$0(receiver);
 };
 J.remove$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).remove$1(receiver, a0);

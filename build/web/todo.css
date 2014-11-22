@@ -22,3 +22,8 @@ body {
   padding: 5px;
   border-bottom: 1px dotted silver;
 }
+
+#list li:hover {
+  color: red;
+  cursor: pointer;
+}
