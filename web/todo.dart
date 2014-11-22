@@ -13,6 +13,7 @@ void main() {
 void addItem(Event e) {
   var newItem = new LIElement();
   newItem.text = input.value;
+  newItem.onClick.listen((e) => newItem.remove());
   input.value = '';
   list.children.add(newItem);
 }
